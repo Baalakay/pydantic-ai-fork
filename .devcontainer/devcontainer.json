@@ -38,11 +38,26 @@
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "zsh",
                 "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } }
-			}
+            },
+            "extensions": [
+                "charliermarsh.ruff",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
+                "esbenp.prettier-vscode",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "ms-vscode.remote-explorer",
+                "ms-vscode-remote.remote-containers",
+                "ms-vscode-remote.remote-ssh",
+                "ms-vscode-remote.remote-ssh-edit",
+                "matangover.mypy",
+                "ms-python.flake8",
+                "ms-python.black-formatter"
+            ]
 		}
 	},
 	    "mounts": [
-            "source=/Users/blake/devcontainer_global,target=/home/devcontainer_global,type=bind,consistency=cache",
+            "source=${localEnv:HOME}${localEnv:USERPROFILE}/Documents/devcontainer_shared,target=/home/vscode/devcontainer_shared,type=bind,consistency=cache",
+            //"source=${localEnv:HOME}${localEnv:USERPROFILE},target=/home/vscode/local_home,type=bind,consistency=cached",
 			"source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
     ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

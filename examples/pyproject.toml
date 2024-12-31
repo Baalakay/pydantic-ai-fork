@@ -49,6 +49,9 @@ packages = ["pydantic_ai_examples"]
 [tool.uv.sources]
 pydantic-ai-slim = { workspace = true }
 
+[tool.mypy]
+plugins = ['pydantic.mypy']
+
 [tool.ruff]
 extend = "../pyproject.toml"
 line-length = 88

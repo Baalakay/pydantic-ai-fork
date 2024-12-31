@@ -56,9 +56,6 @@ pydantic-ai-examples = { workspace = true }
 [tool.uv.workspace]
 members = ["pydantic_ai_slim", "examples"]
 
-[tool.mypy]
-plugins = ['pydantic.mypy']
-
 [dependency-groups]
 # dev dependencies are defined in `pydantic-ai-slim/pyproject.toml` to allow for minimal testing
 lint = [
