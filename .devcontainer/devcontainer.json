@@ -1,9 +1,10 @@
 {
-    "name": "Python3 Dev Container",
+    "name": "Python Dev Env",
 	"build": {
         "dockerfile": "./Dockerfile",
         "context": "."
     },
+    "remoteUser": "vscode",
 	"remoteEnv": {
 		"LOCAL_WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
 		"OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
@@ -37,7 +38,9 @@
 			//Set *default* container specific settings.json values on container create.
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "zsh",
-                "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh" } }
+                "terminal.integrated.profiles.linux": { "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] } },
+                "terminal.integrated.defaultProfile.osx": "zsh",
+                "terminal.integrated.profiles.osx": { "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] } }
             },
             "extensions": [
                 "charliermarsh.ruff",
@@ -57,8 +60,8 @@
 	},
 	    "mounts": [
             "source=${localEnv:HOME}${localEnv:USERPROFILE}/Documents/devcontainer_shared,target=/home/vscode/devcontainer_shared,type=bind,consistency=cache",
-            //"source=${localEnv:HOME}${localEnv:USERPROFILE},target=/home/vscode/local_home,type=bind,consistency=cached",
-			"source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
+			"source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+            "source=${localEnv:HOME}${localEnv:USERPROFILE}/.zsh_history,target=/home/vscode/.zsh_history,type=bind"
     ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -67,7 +70,6 @@
 	// "postCreateCommand": "pip3 install --user -r requirements.txt",
 
 	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode",
 
 	"postCreateCommand": "bash .devcontainer/post-create.sh"
 }
